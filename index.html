@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link  rel="icon"   href="https://www.ecured.cu/images/thumb/5/5e/LOGO_UASB_2.png/1200px-LOGO_UASB_2.png" type="image/png" />
+	<meta charset="UTF-8">
+	<title> Geoportal de Prácticas</title>
+	
+	<style>
+	button {
+		font-size: 30px;
+		line-height: 50px;
+		text-align: center;
+		width: 400px;
+		height: 150px;
+		background-color: aqua;
+		align:center
+		margin-left:auto
+		margin-right:auto
+	}
+	.button {
+		font-size: 15px;
+		line-height: 50px;
+		text-align: center;
+		width: 350px;
+		height: 50px;
+		background-color: aqua;
+		align:center
+		margin-left:auto
+		margin-right:auto
+	}
+		div.center{
+		text-align: center;
+	}
+	
+	.dropbtn {
+  background-color: gray;
+  color: aqua;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: aqua;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  bold
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: grey;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: lavander;}
+	
+	.botonimagen1{
+	background-image:url(https://4.bp.blogspot.com/-8VrKQMDZtYk/UvxKq3NMfqI/AAAAAAAAABc/jiHJfYdsbqU/s1600/img-3.png);
+	
+background-repeat:no-repeat;
+height:150px;
+width:400px;
+background-position:center;	
+		}
+	.botonimagen2{
+	background-image:url(https://blogs.iadb.org/sostenibilidad/wp-content/uploads/sites/26/2020/10/catastro-multiproposito.jpg);
+		background-repeat:no-repeat;
+height:150px;
+width:400px;
+background-position:center
+		
+		}
+	.botonimagen3{
+	background-image:url(https://1.bp.blogspot.com/-Q6tqwA9cB8Q/UsblN6lVl4I/AAAAAAAAABc/f_1rrPhY-UY/s1600/index.jpg);
+		background-repeat:no-repeat;
+height:150px;
+width:400px;
+background-position:center
+		
+		}
+	.botonimagen4{
+	background-image:url(https://www.soluciontopografia.com/cache/5/2/3/9/6/523960355f439447fce1f9f90f115ae13ccbf46f.jpg);
+		background-repeat:no-repeat;
+text-align: center;
+font-size: 40px;
+height:150px;
+width:400px;
+background-position:center
+		
+		}
+	.desplegable{
+	
+	
+	height:100px;
+	width:300px;
+	font-size: 40px;
+	line-height: 50px;
+	text-align: center;
+	
+	}
+		
+		
+		
+		
+		
+		
+	</style>
+	
+	
+	
+	
+	</head>
+	
+	
+	
+	<body style="background-color:Mistyrose">
+	<script>
+	function descargarinfoIGM(){
+	var capa= prompt("Si desea descargar Sudamérica   igm:america_sur_central_a ;                    Si desea descargar ferrocarriles escriba, igm:ferrocarril                            Si desea Lagunas, igm:lago_laguna ;                Si desea limite costa, igm:lim_costanero;      Si desea vias, igm:vias  ", "igm:vias")
+	var formato= prompt("Si desea descargar en kml escriba: KML;                                                     Si desea descargar en glm escriba GML;                                            		                Si desea SHP escriba SHAPE-ZIP", "KML")
+	
+	var enlace = "http://www.geoportaligm.gob.ec/nacional/wfs?SERVICE=WFS&REQUEST=GetFeature&version=2.0.0&typename="+capa+"&outputformat="+formato;
+	
+	alert("Pulse'Desargar aquí'")
+	//document.getElementById("descargainfoIGM").innerHTML = enlace
+	document.getElementById("descargainfoIGM").href = enlace
+	}
+	
+	
+	function visualizarinfoIGM(){
+	var capa= prompt("Si desea descargar Sudamérica   igm:america_sur_central_a ;                    Si desea descargar ferrocarriles escriba, igm:ferrocarril                            Si desea Lagunas, igm:lago_laguna ;                Si desea limite costa, igm:lim_costanero;      Si desea vias, igm:vias  ", "igm_vias")
+	var minx= prompt("Introduzca la longitud más al oeste de la zona a visualizar ","-82.5271530151367")
+	var miny= prompt("Introduzca la latitud más al sur de la zona a visualizar","-5.03552627563477")
+	var maxx= prompt("Introduzca la longitud más al este de la zona a visualizar","-75.1417083740234")
+	var maxy= prompt("Introduzca la latitud más al norte de la zona a visualizar","1.46650671958923")
+	var ancho=prompt("Indique el ancho de la visualización","800")
+	var alto=prompt("Indique el alto de la visualización","800")
+	
+	var enlace = "http://www.geoportaligm.gob.ec/nacional/wms?SERVICE=WMS&REQUEST=GETMAP&version=1.3.0&WIDTH="+ancho+"&HEIGHT="+alto+"&LAYERS="+capa+"&format=IMAGE/PNG&BBOX="+minx+","+miny+","+maxx+","+maxy;
+	
+	alert("Enlace generado correctamente Pulse'Visualice aquí'")
+	//document.getElementById("descargainfoIGM").innerHTML = enlace
+	document.getElementById("visualizacioninfoIGM").href = enlace
+	}
+	
+	function visualizarinfoTematica(){
+	var capa= prompt("Centros educativos : acc_educacion_mas_destino\nCentros de salud : acc_salud_mas_destino\nOrtofto del proyecto  :  division_politica ", "relieve")
+	var minx= prompt("Introduzca la longitud más al oeste de la zona a visualizar ","-82.5271530151367")
+	var miny= prompt("Introduzca la latitud más al sur de la zona a visualizar","-5.03552627563477")
+	var maxx= prompt("Introduzca la longitud más al este de la zona a visualizar","-75.1417083740234")
+	var maxy= prompt("Introduzca la latitud más al norte de la zona a visualizar","1.46650671958923")
+	var ancho=prompt("Indique el ancho de la visualización","800")
+	var alto=prompt("Indique el alto de la visualización","800")
+	
+	var enlace = "http://geoportal.sigtierras.gob.ec:8080/geoserver/sigtierras/wms?SERVICE=WMS&REQUEST=GETMAP&version=1.3.0&WIDTH="+ancho+"&HEIGHT="+alto+"&LAYERS=division_politica,"+capa+"&format=IMAGE/PNG&BBOX="+minx+","+miny+","+maxx+","+maxy;
+	
+	alert("Pulse'Visualice información temática aquí'")
+	//document.getElementById("descargainfoIGM").innerHTML = enlace
+	document.getElementById("visualizacioninfotematica").href = enlace
+
+	}
+	
+	function visualizarcatastro(){
+	var capa= prompt("Predios catastrados : apredios\nCatastrio nacional : catastro_nacional_g\nConstrucciones  :  construcciones ", "catastro_nacional_g")
+	var minx= prompt("Introduzca la longitud más al oeste de la zona a visualizar ","-82.5271530151367")
+	var miny= prompt("Introduzca la latitud más al sur de la zona a visualizar","-5.03552627563477")
+	var maxx= prompt("Introduzca la longitud más al este de la zona a visualizar","-75.1417083740234")
+	var maxy= prompt("Introduzca la latitud más al norte de la zona a visualizar","1.46650671958923")
+	var ancho=prompt("Indique el ancho de la visualización","800")
+	var alto=prompt("Indique el alto de la visualización","800")
+	
+	var enlace = "http://181.112.137.169:8080/geoserver/sigtierras/wms?SERVICE=WMS&REQUEST=GETMAP&version=1.3.0&WIDTH="+ancho+"&HEIGHT="+alto+"&LAYERS=area_intervenida_catastro,"+capa+"&format=IMAGE/PNG&BBOX="+minx+","+miny+","+maxx+","+maxy;
+	
+	alert("Pulse'Visualice información temática aquí'")
+	//document.getElementById("descargainfoIGM").innerHTML = enlace
+	document.getElementById("enlaceorto").href = enlace
+	}
+	
+		function visualizaragro(){
+	var lugar = prompt("Introduzca la provincia que desee visualizar","Pichincha")
+	
+	if (lugar=="Pichincha"){
+	lugar="-79.468,-0.682,-77.730,0.397"
+	} else if (lugar=="Carchi"){
+	
+	lugar="-78.663,0.280,-77.427,1.251"
+	} else {
+	
+	lugar="-81.51,-5.44,-75.17,1.32"
+	}
+	var enlace = "http://181.112.137.164:8080/geoserver/sigtierras/wms?SERVICE=WMS&REQUEST=GETMAP&version=1.3.0&WIDTH=800&HEIGHT=800&LAYERS=zonas_homogeneas&format=IMAGE/PNG&BBOX="+lugar;
+	
+
+	//document.getElementById("descargainfoIGM").innerHTML = enlace
+	document.getElementById("visualizacionagro").href = enlace
+	
+	}
+	
+	
+	function desplegableorto(){
+	
+	var lugar = document.getElementById("midesplegable").value;
+	alert(lugar)
+	if (lugar=="Quito"){
+	coord="-78.95836364115964,-0.6044656427737323,-78.16650714873774,0.2709505746968599"
+	capaorto="sigtierras:orto_quito"
+	} else if (lugar=="Balzar"){
+	coord="-80.08342881254598,-1.5417560881149275,-79.6872919443264,-1.1248627855049753"
+	capaorto="sigtierras:orto_balzar"
+	} else if (lugar=="Machala"){
+	coord="-80.08342881254598,-3.4376755161739827,-79.83310412365067,-3.187319515627625"
+	capaorto="sigtierras:orto_machala"
+	} else if (lugar=="Shushufindi"){
+	coord="-76.9167741724462,-0.5625495954418681,-75.87497685223707,1.39949874545"
+	capaorto="sigtierras:orto_shushufindi"
+	} else{
+	coord="-81.18271719120666,-5.07007554431589,-75.05826722075997,1.4793728961818684"
+	capaorto="sigtierras:relieve_mt"
+	}
+	
+	 var enlace="http://ortofotos.sigtierras.gob.ec/geoserver/wms?SERVICE=WMS&REQUEST=GETMAP&version=1.3.0&WIDTH=800&HEIGHT=800&LAYERS="+capaorto+"&format=IMAGE/PNG&BBOX="+coord;
+	 document.getElementById("visualizaorto").href = enlace
+	}
+	
+	function desplegablenacional(){
+	
+	var capanacional = document.getElementById("desplegablenacional").value;
+	
+	var enlace="http://www.geoportaligm.gob.ec/nacional/wfs?request=GetFeature&service=wfs&version=2.0.0&typename="+capanacional+"&outputformat=KML";
+	
+	document.getElementById("descargainfoIGM").href= enlace
+	}
+	
+	function cargarcapa(){
+	
+	}
+	
+	function descargaregional(){
+	var caparegional = document.getElementById("desplegableregional").value;
+	var formato = document.getElementById("desplegableregfor").value;
+	
+	var enlacereg = "http://www.geoportaligm.gob.ec/regional/wfs?request=GetFeature&service=wfs&version=2.0.0&typename="+caparegional+"&outputformat="+formato;
+	
+	document.getElementById("Descargareg").href= enlacereg
+	}
+	
+	
+	</script>
+	
+	<h1 style="text-align:center"> <img src="https://www.defensa.gob.ec/wp-content/uploads/2019/02/logo_igm.jpg" width="200px" height="100px">&nbsp&nbsp&nbspInsituto Geográfico Militar&nbsp&nbsp&nbsp<img src="https://www.defensa.gob.ec/wp-content/uploads/2018/07/isotipo-midena_1.png" width="200px" height="100px"></h1>
+	
+	<br><br><br>
+	
+    <div class="center" ><button type="button" onclick="visualizarinfoIGM()">Visualizar información Nacional (WMS)</button></div>
+		<br>
+	<center><a target="_blank"id="visualizacioninfoIGM" href="" style="font-size:200%;font-family:Verdana;text-align:center">Visualice aquí</a></center>
+		<br>
+
+	
+	
+		 <center><select class= "button" id="desplegablenacional" onchange="desplegablenacional()">
+       <option value="">DESCARGAR INFORMACIÓN NACIONAL WFS
+       <option value="igm:islas">Islas
+       <option value="igm:lago_laguna">Lago
+	   <option value="igm:lim_costanero">Linea de costa
+	   <option value="igm:mar_a">Mar
+	   <option value="igm:rio_doble">Rio doble
+	   <option value="igm:rio_torrente">Rio torrente
+	   <option value="igm:rodera_l">Rodera
+	   <option value="igm:sendero_l">Sendero
+	   <option value="igm:aeropuertos">Aeropuertos
+	   <option value="igm:limite">Límites
+	   <option value="igm:limite_maritimo_l">Limite marítimo
+	   <option value="igm:poblados">Poblados
+	   <option value="igm:provincias">Provincias
+	   <option value="igm:vias">Vias
+	   <option value="igm:zona_edificada_a">Zona edificada
+     </select></center>
+	
+	
+	<!--<div class="center" ><button type="button" onclick=descargarinfoIGM()>Descargar información Nacional (WFS)</button></div>-->
+	
+	
+	
+	
+	
+	<br>
+	<center><a target="_blank"id="descargainfoIGM" href="" style="font-size:200%;font-family:Verdana;text-align:center">Presione aquí para descargar</a></center>
+	<br><br><br><br>
+	<hr>
+	<h1 style="text-align:center">Descarga información regional</h1>
+	
+<center><select class= "button" id="desplegableregional" onchange="descargaregional()">
+       <option value="">Elija la capa que desee
+	   <option value="igm:aeropuerto_a">Aeropuerto área
+       <option value="igm:aeropuerto_p">Aeropuerto punto
+       <option value="igm:area_inundacion_a">Áreas de Inundación
+	   <option value="igm:caracteristica_terreno_a">Características del terreno
+	   <option value="igm:poblado_p">Poblado
+	   <option value="igm:curva_nivel_l">Curva de Nivel
+	   <option value="igm:granjas_acuaticas_a">Granjas Acuáticas
+	   <option value="igm:isla_a">Isla
+	   <option value="igm:lago_laguna_a">Lagos y Lagunas
+	   <option value="igm:linea_tren_l">Línea del Tren
+	   <option value="igm:zona_manglar_a">Manglar
+	   <option value="igm:pista_aterrizaje_p">Pista de aterrizaje (línea)
+	   <option value="igm:zona_edificada_a">Pista de aterrizaje (punto)
+	   <option value="igm:puente_l">Pista de aterrizaje (punto)
+	   <option value="igm:zona_edificada_a">Puente (linea)
+	   <option value="igm:puente_p">Puente (punto)
+	   <option value="igm:punto_acotado_p">Punto Acotado
+	   <option value="igm:rodera_l">Rodera, camino
+	   <option value="igm:rio_a">Ríos Dobles
+	   <option value="igm:rio_l">Ríos Simples
+	   <option value="igm:sendero_l">Senderos
+	   <option value="igm:nombres_areas_p">Sitio Geográfico
+	   <option value="igm:tuberia_l">Tubería
+	   <option value="igm:tunel_p">Túnel (punto)
+	   <option value="igm:vertice_p">Vértices
+	   <option value="igm:via_l">Vías
+	   <option value="igm:zona_urbana_a">Zona Urbana
+ 
+     </select></center>
+	 
+	 
+	 	 <center><select class= "button" id="desplegableregfor" onchange="descargaregional()">
+       <option value="">Elija formato para descargar su informacion
+	   <option value="SHAPE-ZIP">SHAPEFILE
+       <option value="GML2">GML
+       <option value="KML">KML
+     </select></center>
+	 <br>
+	 <center><a target="_blank" id="Descargareg" href="">Descarga de información Regional</a></center>
+	
+	
+	
+	
+
+	<br><br><br>
+
+	<hr>
+	<h1 style="text-align:center"> Secretaría del Agua</h1>
+	<br><br><br>
+	
+	<center><div class="dropdown">
+	<button class="dropbtn">Visualización de recursos hídricos (WMS)</button>
+	<div class="dropdown-content">
+    <a target="_blank" href="http://www.geoarca.gob.ec:8080/geoserver/wms?request=getmap&width=800&height=800&layers=Recursos_H%C3%ADdricos:cda_2016&format=image/png&bbox=-80.353749076045,-5.017732314364265,-77.8252120993092,-0.9216900501220356">2016</a>
+    <a target="_blank" href="http://www.geoarca.gob.ec:8080/geoserver/wms?request=getmap&width=800&height=800&layers=Recursos_H%C3%ADdricos:cda_2017&format=image/png&bbox=-80.353749076045,-5.017732314364265,-77.8252120993092,-0.9216900501220356">2017</a>
+    <a target="_blank" href="http://www.geoarca.gob.ec:8080/geoserver/wms?request=getmap&width=800&height=800&layers=Recursos_H%C3%ADdricos:cda_2018&format=image/png&bbox=-80.353749076045,-5.017732314364265,-77.8252120993092,-0.9216900501220356">2018</a>
+    <a target="_blank" href="http://www.geoarca.gob.ec:8080/geoserver/wms?request=getmap&width=800&height=800&layers=Recursos_H%C3%ADdricos:cda_2019&format=image/png&bbox=-80.353749076045,-5.017732314364265,-77.8252120993092,-0.9216900501220356">2019</a>
+	<a target="_blank" href="http://www.geoarca.gob.ec:8080/geoserver/wms?request=getmap&width=800&height=800&layers=Recursos_H%C3%ADdricos:cda_2020&format=image/png&bbox=-80.353749076045,-5.017732314364265,-77.8252120993092,-0.9216900501220356">2020</a>
+	</div>
+	</div>
+
+<div class="dropdown">
+  <button class="dropbtn">Descarga de recursos hídricos (WMS)</button>
+  <div class="dropdown-content">
+    <a target="_blank" href="http://www.geoarca.gob.ec:8080/geoserver/wfs?SERVICE=WFS&REQUEST=GetFeature&typeName=Recursos_H%C3%ADdricos:cda_2016&outputformat=kml">2016</a>
+    <a target="_blank" href="http://www.geoarca.gob.ec:8080/geoserver/wfs?SERVICE=WFS&REQUEST=GetFeature&typeName=Recursos_H%C3%ADdricos:cda_2017&outputformat=kml">2017</a>
+    <a target="_blank" href="http://www.geoarca.gob.ec:8080/geoserver/wfs?SERVICE=WFS&REQUEST=GetFeature&typeName=Recursos_H%C3%ADdricos:cda_2018&outputformat=kml">2018</a>
+    <a target="_blank" href="http://www.geoarca.gob.ec:8080/geoserver/wfs?SERVICE=WFS&REQUEST=GetFeature&typeName=Recursos_H%C3%ADdricos:cda_2019&outputformat=kml">2019</a>
+	<a target="_blank" href="http://www.geoarca.gob.ec:8080/geoserver/wfs?SERVICE=WFS&REQUEST=GetFeature&typeName=Recursos_H%C3%ADdricos:cda_2020&outputformat=kml">2020</a>
+  </div>
+</div>
+</center>
+	<hr>
+	<h1 style="text-align:center"> Ministerio de Agricultura (SigTierras)</h1>
+	<br><br><br>
+	<center><div class="botonimagen1" ><button type="button" style="background-color:rgba(15,15,15,0);color:green" onclick=visualizarinfoTematica()>Cartografía temática</button></div></center>
+	<center><a target="_blank"id="visualizacioninfotematica" href="">Presione aqui para visualizar  información temática </a></center>
+	<br>
+	<center><div class="botonimagen2" ><button type="button" style="background-color:rgba(15,15,15,0);color:black" onclick=visualizarcatastro()>Catastro</button></div></center>
+	<center><a id="visualizacioncatastro" href="">Presione aqui para visualizar  información catastral </a></center>
+	<br>
+	<center><div class="botonimagen3" ><button style="background-color:rgba(15,15,15,0);color:white type="button" onclick=visualizaragro()>Zonas homogéneas Agroecológicas</button></div></center>
+	<center><a target="_blank"id="visualizacionagro" href="">Presione aqui para visualizar información de zonas agroecológicas homogéneas </a></center>
+	<br>
+	
+	
+	 <center><select class= "botonimagen4" id="midesplegable" onchange="desplegableorto()">
+       <option value="">ORTOFOTOS
+	   <option value="Quito">Quito
+       <option value="Puerto Napo">Puerto Napo
+       <option value="Guayaquil">Guayaquil
+       <option value="Tulcan">Tulcan
+	   <option value="Ibarra">Ibarra
+     </select></center>
+<br>
+	
+
+	<br><br>	
+	<center><a target="_blank" id="visualizaorto" href="">Presione aqui para visualizar su ortofoto</a></center>
+	</body>
+
+
+
+</html>
